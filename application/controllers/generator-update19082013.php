@@ -83,41 +83,26 @@ class Generator extends CI_Controller {
             // if(!is_dir($path)) //create the folder if it's not already exists
             // {
             //   mkdir($path,0755,TRUE);
-            //}
-            
-            //direktori module x
-            $genpath="generator/modules/".$tabel."/";
-            if(!is_dir($genpath)):
-                //buat direktori controllers
-                mkdir($genpath."controllers/",0755,TRUE);
-
-                //buat direktori models
-                mkdir($genpath."models/",0755,TRUE);
-
-                //buat direktori views 
-                mkdir($genpath."views/",0755,TRUE);
+            // } 
+            $ctlpath="generator/controllers/bootstrap-datatables/".$tabel."/";
+            $mdlpath="generator/models/bootstrap-datatables/".$tabel."/";
+            $viewpath="generator/views/bootstrap-datatables/".$tabel."/";
+            if(!is_dir($ctlpath)):
+                mkdir($ctlpath,0755,TRUE);
             endif;
-
-
-            //$ctlpath="generator/modules/".$tabel."/controllers";
-            //$mdlpath="generator/modules/".$tabel."/models";
-            //$viewpath="generator/modules/".$tabel."/views";
-            // if(!is_dir($ctlpath)):
-            //     mkdir($ctlpath,0755,TRUE);
-            // endif;
-            // if(!is_dir($mdlpath)):
-            //     mkdir($mdlpath,0755,TRUE);
-            // endif;
-            // if(!is_dir($viewpath)):
-            //     mkdir($viewpath,0755,TRUE);
-            // endif;
+            if(!is_dir($mdlpath)):
+                mkdir($mdlpath,0755,TRUE);
+            endif;
+            if(!is_dir($viewpath)):
+                mkdir($viewpath,0755,TRUE);
+            endif;
             /**
             Generator Models
             **/
             //generate table
             $source_model = $this->parser->parse('template_model-datatables', $data, TRUE);
             
-            if (write_file($genpath."models/". $tabel . '_model.php', $source_model)) {
+            if (write_file('generator/models/bootstrap-datatables/'.$tabel.'/models/'. $tabel . '_model.php', $source_model)) {
                 $success[] = 'model '.$tabel.'_model.php';
             }
 
@@ -135,7 +120,7 @@ class Generator extends CI_Controller {
             }
 
             $source_controller = $this->parser->parse('template_controller-datatables', $data, TRUE);
-            if (write_file($genpath."controllers/".$tabel. '.php', $source_controller)) {
+            if (write_file('generator/controllers/bootstrap-datatables/'.$tabel.'/controllers/' . $tabel . '.php', $source_controller)) {
                 $success[] = 'controller '.$tabel.'.php';
             }
             /**
@@ -151,7 +136,7 @@ class Generator extends CI_Controller {
             //generator view ajax datatables and input form 
             //written by Syahroni Wahyu - roniwahyu@gmail.com 04/01/2013
             $source_view_all = $this->parser->parse('template_view-datatables', $data, TRUE);
-            if (write_file($genpath."views/".$tabel . '_view.php', $source_view_all)) {
+            if (write_file('generator/views/bootstrap-datatables/'.$tabel.'/views/'. $tabel . '_view.php', $source_view_all)) {
                 $success[] = 'view '.$tabel.'_view.php';
             }
             //genertor views form
