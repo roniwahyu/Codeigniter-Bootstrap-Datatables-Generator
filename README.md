@@ -1,7 +1,12 @@
 Codeigniter-Bootstrap-Datatables-Generator
 ==========================================
 
-Disalin dari beberapa sumber di Intenet
+Disalin, dikembangkan dari beberapa sumber di Intenet
+
+Oleh:
+Syahroni Wahyu Iriananda
+
+
 
 Kami mencoba membangun Generator CRUD yang bisa di kostumasi lebih lanjut sesuai dengan kebutuhan
 
