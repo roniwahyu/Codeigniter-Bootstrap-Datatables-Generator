@@ -1,10 +1,5 @@
 <?php
-/*
-Terakhir di update pada 05/10/2013
-- Menyesuaikan dengan jQuery 1.9.1
--
 
-*/
 class Generator extends CI_Controller {
 
     function __construct() {
